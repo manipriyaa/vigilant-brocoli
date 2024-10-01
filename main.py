@@ -13,6 +13,7 @@ def signal_handler(sig, frame):
     from config import global_results  
     save_results(global_results, args.output)  
     log_summary()
+    sys.exit(0)
 
 def main():
     
@@ -33,8 +34,8 @@ def main():
 
     try:
         
-        create_output_directory(args.url)
-        args.output = os.path.join(output_directory, args.output)
+        out = create_output_directory(args.url)
+        args.output = os.path.join(out, args.output)
    
         perform_scan(args)
     
